@@ -1,161 +1,393 @@
-/* CONFIGURAÇÕES GERAIS */
+/* 1. CONFIGURAÇÕES GERAIS */
+
+:root {
+    --cor-fundo: #f5f0df;
+    --cor-texto: #302316;
+    --cor-marrom: #49331f;
+    --cor-dourado: #b68135;
+    --cor-branco: #ffffff;
+    --largura-conteudo: 1280px;
+}
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    }
+}
 
 html {
-scroll-behavior: smooth;
+    scroll-behavior: smooth;
+    scroll-padding-top: 20px;
 }
 
 body {
-font-family: Arial, Helvetica, sans-serif;
-background-color: #f5f0df;
-color: #302316;
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--cor-fundo);
+    color: var(--cor-texto);
+    line-height: 1.6;
 }
 
-/* CABEÇALHO */
+img {
+    display: block;
+    max-width: 100%;
+}
+
+a {
+    color: inherit;
+}
+
+main {
+    width: 100%;
+}
+
+/* 2. CABEÇALHO */
+
 header {
-width: 100%;
-background-color: #f5f0df;
-padding: 15px 5%;
+    width: 100%;
+    padding: 15px 5%;
+    background: var(--cor-fundo);
 }
 
 nav {
-min-height: 90px;
-display: flex;
-align-items: center;
-justify-content: space-between;
-gap: 30px;
+    max-width: var(--largura-conteudo);
+    min-height: 90px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+}
+
+.logo {
+    flex-shrink: 0;
+    color: var(--cor-marrom);
+    text-decoration: none;
 }
 
 .logo h2 {
-color: #49331f;
-font-size: 25px;
-font-weight: bold;
+    display: flex;
+    align-items: 700;
+    gap: 10px;
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--cor-marrom);
+}
+.logo i {
+    color: var(--cor-marrom);
+    font-size: 25px;
 }
 
 nav ul {
-display: flex;
-align-items: center;
-gap: 28px;
-list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    list-style: none;
 }
 
 nav ul li a {
-color: #302316;
-text-decoration: none;
-font-size: 12px;
-font-weight: bold;
-transition: color 0.3s;
+    display: inline-block;
+    padding: 8px 0;
+    color: var(--cor-texto);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+    transition: color 0.3s ease;
 }
 
 nav ul li a:hover {
-color: #b68135;
+    color: var(--cor-dourado);
 }
 
-/* BANNER PRINCIPAL */
+nav ul li a:focus-visible,
+.botao-cardapio:focus-visible {
+    outline: 2px solid var(--cor-dourado);
+    outline-offset: 4px;
+}
+
+/* 3. BANNER PRINCIPAL */
+
 #home {
-min-height: 540px;
-position: relative;
-display: flex;
-flex-direction: column;
-align-items: flex-start;
-justify-content: center;
-padding: 70px 8%;
-overflow: hidden;
-isolation: isolate;
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    min-height: 540px;
+    padding: 70px 8%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
 }
 
-/* IMAGEM DE FUNDO */
 .imagem-home {
-position: absolute;
-inset: 0;
-width: 100%;
-height: 100%;
-object-fit: cover;
-object-position: center;
-z-index: -2;
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
 }
 
-/* CAMADA DOURADA SOBRE A IMAGEM */
 #home::before {
-content: “”;
-position: absolute;
-inset: 0;
-background: linear-gradient(
-90deg,
-rgba(219, 174, 91, 0.88) 0%,
-rgba(219, 174, 91, 0.65) 45%,
-rgba(45, 29, 15, 0.20) 100%
-);
-z-index: -1;
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(
+        90deg,
+        rgba(219, 174, 91, 0.88),
+        rgba(219, 174, 91, 0.65) 45%,
+        rgba(45, 29, 15, 0.20)
+    );
 }
 
-/* TÍTULO */
 #home h1 {
-max-width: 470px;
-margin-bottom: 20px;
-color: #302013;
-font-size: clamp(32px, 4vw, 48px);
-line-height: 1.15;
-font-weight: 800;
+    max-width: 470px;
+    margin-bottom: 20px;
+    color: var(--cor-texto);
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 800;
+    line-height: 1.15;
 }
 
-/* TEXTO */
-#home p {
-max-width: 440px;
-margin-bottom: 28px;
-color: #35271b;
-font-size: 15px;
-line-height: 1.7;
+#home > p {
+    max-width: 440px;
+    margin-bottom: 28px;
+    font-size: 15px;
+    line-height: 1.7;
 }
 
-/* BOTÃO DO CARDÁPIO */
 .botao-cardapio {
-display: inline-block;
-padding: 15px 28px;
-background-color: #f5f0df;
-color: #302316;
-text-decoration: none;
-font-size: 13px;
-font-weight: bold;
-border-radius: 8px;
-transition: 0.3s;
+    display: inline-block;
+    padding: 15px 28px;
+    border-radius: 8px;
+    background: var(--cor-fundo);
+    color: var(--cor-texto);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+    transition: background-color 0.3s ease,
+                color 0.3s ease,
+                transform 0.3s ease;
 }
 
 .botao-cardapio:hover {
-background-color: #bd873c;
-color: #ffffff;
-transform: translateY(-2px);
+    background: var(--cor-dourado);
+    color: var(--cor-branco);
+    transform: translateY(-2px);
 }
 
-/* RESPONSIVIDADE PARA CELULAR */
-@media (max-width: 700px) {
-header {
-padding: 20px;
-}
+/* 4. SEÇÃO SOBRE */
 
-nav {
+#sobre {
+    position: relative;
+    isolation: isolate;
+    display: flex;
     flex-direction: column;
-    gap: 20px;
-}
-nav ul {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-}
-#home {
-    min-height: 500px;
-    padding: 50px 25px;
-}
-#home h1 {
-    font-size: 34px;
-}
-#home p {
-    font-size: 14px;
+    background: var(--cor-fundo);
 }
 
+.imagem-sobre {
+    position: absolute;
+    inset: 0 0 auto;
+    z-index: -1;
+    width: 100%;
+    height: 460px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.conteudo-sobre {
+    width: 50%;
+    min-height: 460px;
+    margin-left: auto;
+    padding: 50px 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(245, 240, 223, 0.94);
+    text-align: center;
+}
+
+.conteudo-sobre h2 {
+    max-width: 500px;
+    margin-bottom: 20px;
+    color: var(--cor-marrom);
+    font-size: clamp(22px, 2.5vw, 30px);
+    line-height: 1.3;
+}
+
+.conteudo-sobre p {
+    max-width: 500px;
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+/* 5. DIFERENCIAIS */
+
+.qualidades {
+    width: 100%;
+    max-width: var(--largura-conteudo);
+    margin: auto;
+    padding: 45px 5%;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 32px;
+    background: var(--cor-fundo);
+}
+
+.qualidade {
+    padding: 12px;
+    text-align: center;
+}
+
+.qualidade h3 {
+    margin-bottom: 16px;
+    color: var(--cor-marrom);
+    font-size: 17px;
+}
+
+.qualidade i {
+    display: block;
+    margin-bottom: 16px;
+    color: var(--cor-marrom);
+    font-size: 38px;
+}
+
+.qualidade p {
+    max-width: 280px;
+    margin: auto;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+/* 6. TABLETS */
+
+@media (max-width: 900px) {
+    header {
+        padding-right: 4%;
+        padding-left: 4%;
+    }
+
+    nav {
+        gap: 20px;
+    }
+
+    nav ul {
+        gap: 16px;
+    }
+
+    .conteudo-sobre {
+        width: 55%;
+        padding: 35px 4%;
+    }
+
+    .qualidades {
+        gap: 16px;
+        padding-right: 3%;
+        padding-left: 3%;
+    }
+}
+
+/* 7. CELULARES */
+
+@media (max-width: 700px) {
+    header {
+        padding: 20px;
+    }
+
+    nav {
+        flex-direction: column;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px 18px;
+    }
+
+    nav ul li a {
+        font-size: 11px;
+    }
+
+    #home {
+        min-height: 500px;
+        padding: 50px 25px;
+    }
+
+    #home h1 {
+        max-width: 380px;
+        font-size: clamp(30px, 8vw, 38px);
+    }
+
+    #home > p {
+        max-width: 380px;
+        font-size: 14px;
+    }
+
+    .imagem-sobre {
+        height: 300px;
+    }
+
+    .conteudo-sobre {
+        width: 100%;
+        min-height: 0;
+        margin-top: 300px;
+        padding: 35px 25px;
+        background: var(--cor-fundo);
+    }
+
+    .conteudo-sobre h2 {
+        font-size: 25px;
+    }
+
+    .conteudo-sobre p {
+        font-size: 14px;
+    }
+
+    .qualidades {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 30px 25px;
+    }
+
+    .qualidade {
+        padding: 15px;
+    }
+}
+
+/* 8. TELAS PEQUENAS */
+
+@media (max-width: 380px) {
+    nav ul {
+        gap: 8px 12px;
+    }
+
+    #home {
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+
+    .botao-cardapio {
+        padding: 13px 22px;
+    }
+}
+
+/* 9. ACESSIBILIDADE */
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
+        animation: none !important;
+    }
 }
