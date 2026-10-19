@@ -1,4 +1,4 @@
-/* 1. CONFIGURAÇÕES GERAIS */
+/* ===== CONFIGURAÇÕES GERAIS ===== */
 
 :root {
     --cor-fundo: #f5f0df;
@@ -21,9 +21,9 @@ html {
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
     background: var(--cor-fundo);
     color: var(--cor-texto);
+    font-family: Arial, Helvetica, sans-serif;
     line-height: 1.6;
 }
 
@@ -34,95 +34,87 @@ img {
 
 a {
     color: inherit;
+    text-decoration: none;
 }
 
-main {
+button {
+    font: inherit;
+    cursor: pointer;
+}
+
+main,
+section {
     width: 100%;
 }
 
-/* 2. CABEÇALHO */
+/* ===== CABEÇALHO ===== */
 
 header {
+    position: relative;
+    z-index: 10;
     width: 100%;
-    padding: 15px 5%;
     background: var(--cor-fundo);
+    box-shadow: 0 2px 10px rgba(48, 35, 22, 0.08);
 }
 
-nav {
-    max-width: var(--largura-conteudo);
-    min-height: 90px;
+header > nav {
+    width: min(92%, var(--largura-conteudo));
+    min-height: 82px;
     margin: auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 32px;
-}
-
-.logo {
-    flex-shrink: 0;
-    color: var(--cor-marrom);
-    text-decoration: none;
+    gap: 25px;
 }
 
 .logo h2 {
     display: flex;
-    align-items: 700;
-    gap: 10px;
-    font-size: 25px;
-    font-weight: 700;
-    line-height: 1.2;
-    color: var(--cor-marrom);
-}
-.logo i {
-    color: var(--cor-marrom);
-    font-size: 25px;
-}
-
-nav ul {
-    display: flex;
     align-items: center;
-    gap: 28px;
-    list-style: none;
+    gap: 10px;
+    color: var(--cor-marrom);
+    font-size: 26px;
+    white-space: nowrap;
 }
 
-nav ul li a {
-    display: inline-block;
-    padding: 8px 0;
-    color: var(--cor-texto);
-    text-decoration: none;
-    font-size: 12px;
-    font-weight: 700;
-    transition: color 0.3s ease;
-}
-
-nav ul li a:hover {
+.logo i {
     color: var(--cor-dourado);
 }
 
-nav ul li a:focus-visible,
-.botao-cardapio:focus-visible {
-    outline: 2px solid var(--cor-dourado);
-    outline-offset: 4px;
+header nav ul {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    list-style: none;
 }
 
-/* 3. BANNER PRINCIPAL */
+header nav ul li a {
+    color: var(--cor-texto);
+    font-size: 14px;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+header nav ul li a:hover {
+    color: var(--cor-dourado);
+}
+
+/* ===== PÁGINA INICIAL ===== */
 
 #home {
     position: relative;
-    isolation: isolate;
-    overflow: hidden;
-    min-height: 540px;
-    padding: 70px 8%;
+    min-height: 600px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
+    padding: 70px 8%;
+    overflow: hidden;
+    background: var(--cor-marrom);
 }
 
 .imagem-home {
     position: absolute;
     inset: 0;
-    z-index: -2;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -133,251 +125,626 @@ nav ul li a:focus-visible,
     content: "";
     position: absolute;
     inset: 0;
-    z-index: -1;
+    z-index: 1;
     background: linear-gradient(
         90deg,
-        rgba(219, 174, 91, 0.88),
-        rgba(219, 174, 91, 0.65) 45%,
-        rgba(45, 29, 15, 0.20)
+        rgba(35, 23, 13, 0.8),
+        rgba(35, 23, 13, 0.15)
     );
 }
 
+#home h1,
+#home p,
+#home .botao-cardapio {
+    position: relative;
+    z-index: 2;
+}
+
 #home h1 {
-    max-width: 470px;
-    margin-bottom: 20px;
-    color: var(--cor-texto);
-    font-size: clamp(32px, 4vw, 48px);
-    font-weight: 800;
+    max-width: 650px;
+    margin-bottom: 22px;
+    color: var(--cor-branco);
+    font-size: clamp(38px, 5vw, 64px);
     line-height: 1.15;
 }
 
-#home > p {
-    max-width: 440px;
-    margin-bottom: 28px;
-    font-size: 15px;
-    line-height: 1.7;
+#home p {
+    max-width: 530px;
+    margin-bottom: 30px;
+    color: var(--cor-branco);
+    font-size: 18px;
 }
 
 .botao-cardapio {
     display: inline-block;
-    padding: 15px 28px;
-    border-radius: 8px;
-    background: var(--cor-fundo);
-    color: var(--cor-texto);
-    text-decoration: none;
-    font-size: 13px;
+    padding: 13px 28px;
+    border: 2px solid var(--cor-dourado);
+    border-radius: 5px;
+    background: var(--cor-dourado);
+    color: var(--cor-branco);
+    font-size: 14px;
     font-weight: 700;
-    transition: background-color 0.3s ease,
-                color 0.3s ease,
-                transform 0.3s ease;
+    transition: background-color 0.3s;
 }
 
 .botao-cardapio:hover {
-    background: var(--cor-dourado);
-    color: var(--cor-branco);
-    transform: translateY(-2px);
+    background: var(--cor-marrom);
 }
 
-/* 4. SEÇÃO SOBRE */
+/* ===== SOBRE A CAFETERIA ===== */
 
 #sobre {
     position: relative;
-    isolation: isolate;
+    min-height: 540px;
     display: flex;
-    flex-direction: column;
-    background: var(--cor-fundo);
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 30px;
+    padding: 70px 5%;
+    overflow: hidden;
 }
 
 .imagem-sobre {
     position: absolute;
-    inset: 0 0 auto;
-    z-index: -1;
+    inset: 0;
     width: 100%;
-    height: 460px;
+    height: 100%;
     object-fit: cover;
-    object-position: center;
+    object-position: left center;
+}
+
+#sobre::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(
+        90deg,
+        rgba(245, 240, 223, 0.05),
+        rgba(245, 240, 223, 0.25) 30%,
+        rgba(245, 240, 223, 0.94) 60%,
+        rgba(245, 240, 223, 0.98)
+    );
 }
 
 .conteudo-sobre {
-    width: 50%;
-    min-height: 460px;
+    position: relative;
+    z-index: 2;
+    width: 52%;
     margin-left: auto;
-    padding: 50px 5%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: rgba(245, 240, 223, 0.94);
-    text-align: center;
 }
 
 .conteudo-sobre h2 {
-    max-width: 500px;
     margin-bottom: 20px;
     color: var(--cor-marrom);
-    font-size: clamp(22px, 2.5vw, 30px);
-    line-height: 1.3;
+    font-size: clamp(30px, 4vw, 44px);
+    line-height: 1.2;
 }
 
 .conteudo-sobre p {
-    max-width: 500px;
-    font-size: 15px;
-    line-height: 1.8;
+    font-size: 16px;
 }
 
-/* 5. DIFERENCIAIS */
-
 .qualidades {
+    position: relative;
+    z-index: 2;
     width: 100%;
-    max-width: var(--largura-conteudo);
-    margin: auto;
-    padding: 45px 5%;
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 32px;
-    background: var(--cor-fundo);
+    gap: 18px;
+    margin-top: 25px;
 }
 
 .qualidade {
-    padding: 12px;
+    padding: 22px 16px;
+    border: 1px solid rgba(73, 51, 31, 0.15);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.9);
     text-align: center;
 }
 
 .qualidade h3 {
-    margin-bottom: 16px;
+    margin-bottom: 12px;
     color: var(--cor-marrom);
     font-size: 17px;
 }
 
 .qualidade i {
-    display: block;
-    margin-bottom: 16px;
-    color: var(--cor-marrom);
-    font-size: 38px;
+    margin-bottom: 12px;
+    color: var(--cor-dourado);
+    font-size: 28px;
 }
 
 .qualidade p {
-    max-width: 280px;
+    font-size: 14px;
+}
+
+/* ===== CARDÁPIO ===== */
+
+#cardapio {
+    padding-bottom: 80px;
+}
+
+.banner-cardapio,
+.banner-espaco {
+    position: relative;
+    min-height: 260px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: var(--cor-marrom);
+}
+
+.banner-cardapio img,
+.banner-espaco img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.banner-cardapio::before,
+.banner-espaco::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: rgba(40, 26, 15, 0.45);
+}
+
+.banner-cardapio h2,
+.banner-espaco h2 {
+    position: relative;
+    z-index: 2;
+    color: var(--cor-branco);
+    font-size: clamp(34px, 5vw, 48px);
+    text-align: center;
+}
+
+.filtros-cardapio {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 35px auto;
+    padding: 0 20px;
+}
+
+.filtros-cardapio button {
+    padding: 10px 23px;
+    border: 1px solid var(--cor-marrom);
+    border-radius: 25px;
+    background: transparent;
+    color: var(--cor-marrom);
+    transition: all 0.3s;
+}
+
+.filtros-cardapio button:hover {
+    background: var(--cor-marrom);
+    color: var(--cor-branco);
+}
+
+.lista-produtos {
+    width: min(90%, var(--largura-conteudo));
     margin: auto;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.produto {
+    overflow: hidden;
+    border-radius: 10px;
+    background: var(--cor-branco);
+    box-shadow: 0 4px 15px rgba(48, 35, 22, 0.1);
+    transition: transform 0.3s;
+}
+
+.produto:hover {
+    transform: translateY(-5px);
+}
+
+.produto img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.produto h3 {
+    margin: 16px 16px 8px;
+    color: var(--cor-marrom);
+    font-size: 18px;
+    line-height: 1.4;
+}
+
+.produto p {
+    margin: 0 16px 18px;
+    color: var(--cor-dourado);
+    font-size: 17px;
+    font-weight: 700;
+}
+
+/* ===== NOSSO ESPAÇO ===== */
+
+.nosso-espaco {
+    padding-bottom: 80px;
+}
+
+.conteudo-espaco {
+    width: min(90%, var(--largura-conteudo));
+    margin: 55px auto 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 30px;
+}
+
+.conteudo-espaco > h3 {
+    grid-column: 1 / -1;
+    max-width: 800px;
+    color: var(--cor-marrom);
+    font-size: clamp(25px, 3vw, 34px);
+    line-height: 1.3;
+}
+
+.imagem-ambiente img {
+    width: 100%;
+    min-height: 300px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.imagem-ambiente p {
+    margin-top: 18px;
+    font-size: 16px;
+}
+
+.beneficio {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 18px;
+    border-radius: 8px;
+    background: var(--cor-branco);
+}
+
+.beneficio i {
+    width: 45px;
+    height: 45px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--cor-marrom);
+    color: var(--cor-branco);
+    font-size: 19px;
+}
+
+.beneficio p {
+    font-size: 15px;
+}
+
+/* ===== HORÁRIOS E LOCALIZAÇÃO ===== */
+
+#horarios {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 45px;
+    padding: 80px 5%;
+    background: #eee5d0;
+}
+
+.horarios-conteudo h2 {
+    margin-bottom: 25px;
+    color: var(--cor-marrom);
+    font-size: clamp(30px, 4vw, 42px);
+}
+
+.horarios-conteudo table {
+    width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+    border-radius: 8px;
+    background: var(--cor-branco);
+}
+
+.horarios-conteudo th,
+.horarios-conteudo td {
+    padding: 14px 16px;
+    border-bottom: 1px solid #e5dccb;
+    text-align: left;
+}
+
+.horarios-conteudo th {
+    background: var(--cor-marrom);
+    color: var(--cor-branco);
+}
+
+.horarios-conteudo tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.horarios-conteudo tbody tr:nth-child(even) {
+    background: #faf7ef;
+}
+
+.localizacao img {
+    width: 100%;
+    max-height: 360px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.localizacao p {
+    margin-top: 15px;
+    color: var(--cor-marrom);
+    font-weight: 600;
+}
+
+/* ===== RODAPÉ ===== */
+
+footer {
+    padding: 20px 5%;
+    background: var(--cor-marrom);
+    color: var(--cor-dourado);
+}
+
+#contato {
+    width: 100%;
+    max-width: var(--largura-conteudo);
+    min-height: 110px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    align-items: center;
+    column-gap: 20px;
+}
+
+/* Logo e ícones à esquerda */
+
+.footer-logo {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: start;
+}
+
+.footer-logo h2 {
+    color: var(--cor-dourado);
+    font-size: 28px;
+    line-height: 1.2;
+}
+
+.logo-icones {
+    grid-column: 1;
+    grid-row: 2;
+    display: flex;
+    gap: 12px;
+    justify-self: start;
+    align-items: center;
+    color: var(--cor-dourado);
+}
+
+/* Endereço e telefone no centro */
+
+.footer-contato {
+    grid-column: 2;
+    grid-row: 2;
+    justify-self: center;
+    align-self: center;
+    text-align: center;
     font-size: 13px;
-    line-height: 1.7;
+    font-weight: 600;
 }
 
-/* 6. TABLETS */
-
-@media (max-width: 900px) {
-    header {
-        padding-right: 4%;
-        padding-left: 4%;
-    }
-
-    nav {
-        gap: 20px;
-    }
-
-    nav ul {
-        gap: 16px;
-    }
-
-    .conteudo-sobre {
-        width: 55%;
-        padding: 35px 4%;
-    }
-
-    .qualidades {
-        gap: 16px;
-        padding-right: 3%;
-        padding-left: 3%;
-    }
+.footer-contato p {
+    margin: 2px 0;
 }
 
-/* 7. CELULARES */
+/* Menu e direitos reservados à direita */
 
-@media (max-width: 700px) {
-    header {
-        padding: 20px;
-    }
+.footer-direita {
+    display: contents;
+}
 
-    nav {
+.footer-direita nav {
+    grid-column: 3;
+    grid-row: 1;
+    justify-self: end;
+}
+
+.footer-direita nav ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 18px;
+    list-style: none;
+}
+
+.footer-direita nav a {
+    color: var(--cor-dourado);
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.footer-direita nav a:hover {
+    color: var(--cor-branco);
+}
+
+.footer-direita > p {
+    grid-column: 3;
+    grid-row: 2;
+    justify-self: end;
+    align-self: center;
+    text-align: right;
+    font-size: 12px;
+}
+
+/* ===== TABLETS ===== */
+
+@media (max-width: 1000px) {
+    header > nav {
         flex-direction: column;
         justify-content: center;
-        gap: 20px;
+        padding: 20px 0;
     }
 
-    nav ul {
-        flex-wrap: wrap;
+    header nav ul {
         justify-content: center;
-        gap: 8px 18px;
-    }
-
-    nav ul li a {
-        font-size: 11px;
+        flex-wrap: wrap;
+        gap: 14px 20px;
     }
 
     #home {
-        min-height: 500px;
-        padding: 50px 25px;
+        min-height: 520px;
+    }
+
+    .conteudo-sobre {
+        width: 65%;
+    }
+
+    .lista-produtos {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    #horarios {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ===== CELULARES ===== */
+
+@media (max-width: 600px) {
+    header > nav {
+        gap: 15px;
+    }
+
+    .logo h2 {
+        font-size: 23px;
+    }
+
+    header nav ul {
+        gap: 10px 14px;
+    }
+
+    header nav ul li a {
+        font-size: 12px;
+    }
+
+    #home {
+        min-height: 480px;
+        padding: 50px 6%;
     }
 
     #home h1 {
-        max-width: 380px;
-        font-size: clamp(30px, 8vw, 38px);
+        font-size: 38px;
     }
 
-    #home > p {
-        max-width: 380px;
-        font-size: 14px;
+    #home p {
+        font-size: 16px;
     }
 
-    .imagem-sobre {
-        height: 300px;
+    #sobre {
+        padding: 55px 6%;
+    }
+
+    #sobre::before {
+        background: rgba(245, 240, 223, 0.88);
     }
 
     .conteudo-sobre {
         width: 100%;
-        min-height: 0;
-        margin-top: 300px;
-        padding: 35px 25px;
-        background: var(--cor-fundo);
     }
 
-    .conteudo-sobre h2 {
-        font-size: 25px;
-    }
-
-    .conteudo-sobre p {
-        font-size: 14px;
-    }
-
-    .qualidades {
+    .qualidades,
+    .lista-produtos,
+    .conteudo-espaco {
         grid-template-columns: 1fr;
-        gap: 24px;
-        padding: 30px 25px;
     }
 
-    .qualidade {
-        padding: 15px;
+    .banner-cardapio,
+    .banner-espaco {
+        min-height: 210px;
+    }
+
+    .lista-produtos {
+        max-width: 380px;
+    }
+
+    .produto img {
+        height: 230px;
+    }
+
+    .conteudo-espaco > h3 {
+        grid-column: 1;
+    }
+
+    .imagem-ambiente img {
+        min-height: 240px;
+    }
+
+    #horarios {
+        padding: 55px 6%;
+    }
+
+    .horarios-conteudo th,
+    .horarios-conteudo td {
+        padding: 12px 8px;
+        font-size: 13px;
+    }
+
+    footer {
+        padding: 30px 6%;
+    }
+
+    #contato {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        gap: 18px;
+        text-align: center;
+    }
+
+    .footer-logo,
+    .logo-icones,
+    .footer-contato,
+    .footer-direita nav,
+    .footer-direita > p {
+        grid-column: 1;
+        grid-row: auto;
+        justify-self: center;
+        text-align: center;
+    }
+
+    .logo-icones {
+        justify-content: center;
+    }
+
+    .footer-direita {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 18px;
+    }
+
+    .footer-direita nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .footer-direita > p {
+        font-size: 11px;
     }
 }
 
-/* 8. TELAS PEQUENAS */
-
-@media (max-width: 380px) {
-    nav ul {
-        gap: 8px 12px;
-    }
-
-    #home {
-        padding-right: 20px;
-        padding-left: 20px;
-    }
-
-    .botao-cardapio {
-        padding: 13px 22px;
-    }
-}
-
-/* 9. ACESSIBILIDADE */
+/* ===== ACESSIBILIDADE ===== */
 
 @media (prefers-reduced-motion: reduce) {
     html {
@@ -388,6 +755,5 @@ nav ul li a:focus-visible,
     *::before,
     *::after {
         transition: none !important;
-        animation: none !important;
     }
 }
